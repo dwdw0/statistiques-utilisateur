@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Statistiques Utilisateur</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .stat {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Statistiques Personnalisées</h1>
+  <div id="stats" class="stat">
+    Chargement des données...
+  </div>
+
+  <script>
+    // Fonction pour récupérer les paramètres GET de l’URL
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    const nom = getParam('nom') || 'Inconnu';
+    const age = getParam('age') || 'Non spécifié';
+    const sexe = getParam('sexe') || 'Non précisé';
+
+    // Affichage dynamique
+    const statsDiv = document.getElementById('stats');
+    statsDiv.innerHTML = `
+      <p><strong>Nom :</strong> ${nom}</p>
+      <p><strong>Âge :</strong> ${age}</p>
+      <p><strong>Sexe :</strong> ${sexe}</p>
+    `;
+  </script>
+</body>
+</html>
